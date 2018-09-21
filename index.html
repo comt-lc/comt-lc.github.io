@@ -3,7 +3,21 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+<script src='https://tiles.unwiredmaps.com/v2/js/unwired-gl.js?v=0.1.6'></script>
+<link href='https://tiles.unwiredmaps.com/v2/js/unwired-gl.css?v=0.1.6' rel='stylesheet' />
 <style>
+
+#markerWithExternalCss {
+                background-image: url('https://comt-lc.github.io/marker5.png');
+                background-size: cover;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -24,7 +38,7 @@ tr:nth-child(even) {
 </style>
 </head>
 <body>
- <p>AIzaSyDnA8DJKIOJvgPpp9-vuduQLll6UZyPC4k</p>
+ 
 <table>
   <tr>
     <th>Мероприятие</th>
@@ -39,14 +53,14 @@ tr:nth-child(even) {
     <td>18.12.2018 - 21.12.2018 г.</td>
     <td>Санкт-Петербург, Россия</td>
     <td>1 октября 2018 г.</td>
-    <td><a href="http://ntcup.ru/wp-content/files_mf/1_%D0%B8%D0%BD%D1%84_%D1%80%D1%83%D1%81.pdf">Информационное сообщение</a></td>
+    <td><a target="_blank" href="http://ntcup.ru/wp-content/files_mf/1_%D0%B8%D0%BD%D1%84_%D1%80%D1%83%D1%81.pdf">Информационное сообщение</a></td>
   </tr>
   <tr>
     <td>PHOTOPTICS 2019 – 7th International Conference on Photonics, Optics and Laser Technology</td>
     <td>15.02.2019 - 27.02.2019</td>
     <td>Прага, Чехия</td>
     <td>1 октября 2018 г.</td>
-    <td><a href="http://www.photoptics.org/">Перейти на сайт</a></td>
+    <td><a href="http://www.photoptics.org/" target="_blank">Перейти на сайт</a></td>
   </tr>
 
   <tr>
@@ -54,7 +68,7 @@ tr:nth-child(even) {
     <td> 24.03.2019 - 27.03.2019</td>
     <td>Стокгольм, Швеция</td>
     <td>5 октября 2018 г.</td>
-    <td><a href="https://www.physics.worldcongressseries.com/wsc19/">Перейти на сайт</a></td>
+    <td><a target="_blank" href="https://www.physics.worldcongressseries.com/wsc19/">Перейти на сайт</a></td>
   </tr>
 
   <tr>
@@ -62,7 +76,7 @@ tr:nth-child(even) {
     <td>28.11.2018 - 29.11.2018 г.</td>
     <td>Институт спектроскопии РАН, Троицк, Москва, Россия</td>
     <td>7 октября 2018 г.</td>
-    <td><a href="https://isan.troitsk.ru/ru/50/">Перейти на сайт</a></td>
+    <td><a target="_blank" href="https://isan.troitsk.ru/ru/50/">Перейти на сайт</a></td>
   </tr>
 
   <tr>
@@ -70,7 +84,7 @@ tr:nth-child(even) {
     <td>01.04.2019 - 04.04.2019 г.</td>
     <td>Прага, Чехия</td>
     <td>24 октября 2018 г.</td>
-    <td><a href="http://spie.org/conferences-and-exhibitions/optics-and-optoelectronics">Перейти на сайт</a></td>
+    <td><a target="_blank" href="http://spie.org/conferences-and-exhibitions/optics-and-optoelectronics">Перейти на сайт</a></td>
   </tr>
 
 
@@ -79,7 +93,7 @@ tr:nth-child(even) {
     <td> 21.05.2019 - 24.05.2019</td>
     <td>Минск, Беларусь</td>
     <td>22 декабря 2018 г.</td>
-    <td><a href="http://nanomeeting.org/">Перейти на сайт</a></td>
+    <td><a target="_blank" href="http://nanomeeting.org/">Перейти на сайт</a></td>
   </tr>
 
 
@@ -88,7 +102,7 @@ tr:nth-child(even) {
     <td> 19.03.2019 - 22.03.2019 </td>
     <td>Вильнюс, Литва</td>
     <td>2 февраля 2019 г.</td>
-    <td><a href="http://www.openreadings.eu/">Перейти на сайт</a></td>
+    <td><a target="_blank" href="http://www.openreadings.eu/">Перейти на сайт</a></td>
   </tr>
 
   <tr>
@@ -96,23 +110,162 @@ tr:nth-child(even) {
     <td> 29.09.2019 - 03.10.2019 </td>
     <td>Вена, Австрия</td>
     <td>Будет объявлен позднее</td>
-    <td><a href="https://assl.osa.org/home/">Перейти на сайт</a></td>
+    <td><a target="_blank" href="https://assl.osa.org/home/">Перейти на сайт</a></td>
   </tr>
 </table>
 
-<div id="googleMap" style="width:80%;height:400px;margin: 70px;"></div>
+<div id="map"  style="width:80%;height:400px;margin:70px; filter: grayscale(70%);"></div>
 
 <script>
-function myMap() {
-var mapProp= {
-    center:new google.maps.LatLng(51.508742,-0.120850),
-    zoom:5,
-};
-var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-}
+    //Add your Unwired Maps Access Token here (not the API token!)
+    unwired.key = mapboxgl.accessToken = 'pk.587a1e5f79532cb362989a54491af075';
+    //Define the map and configure the map's theme
+    var map = new mapboxgl.Map({
+        container: 'map',
+        attributionControl: false, //need this to show a compact attribution icon (i) instead of the whole text
+        style: unwired.getLayer("streets"), //get Unwired's style template
+        zoom: 3,
+        center: [25.2813, 54.6875]
+    });
+                
+
+                
+    //Add Unwired's Layer Control plugin            
+    //Define layers you want to add to the layer controls; the first element will be the default layer
+    var layers = ["streets", "earth", "hybrid"];
+    map.addControl(new unwiredLayerControl({
+        key: unwired.key,
+        layers: layers
+    }), 'top-left');
+    var popupopenreadings = new mapboxgl.Popup()
+                .setHTML('<b>OPEN READINGS-2019</b><br> <b>Dates:</b> 19.03.2019 - 22.03.2019<br><b>Deadline:</b> 02.02.2019');    
+//OPEN-READINGS marker
+    var el1 = document.createElement('div');
+            el1.id = 'markerWithExternalCss';
+            // finally, create the marker
+            var openreadings = new mapboxgl.Marker(el1)
+                .setLngLat([25.326621,54.723435])
+                .setPopup(popupopenreadings)
+                .addTo(map);
+                el1.addEventListener('click', function() {
+                  map.flyTo({center: [25.326621,54.723435], zoom: 5});
+                 });
+
+ var popupnanomeeting = new mapboxgl.Popup()
+        .setHTML('<b>NANOMEETING-2019</b><br> <b>Dates:</b> 21.05.2019 - 24.05.2019<br><b>Deadline:</b> 22.12.2018<br><a style="text-decoration:none;font-weight:bold;" href="http://nanomeeting.org/" target="_blank">Website</a>');    
+
+//BELARUS-NANOMEETING
+    var el2 = document.createElement('div');
+            el2.id = 'markerWithExternalCss';
+            // finally, create the marker
+            var nanomeetingmarker = new mapboxgl.Marker(el2)
+                .setLngLat([27.594985,53.917944])
+                .setPopup(popupnanomeeting)
+                .addTo(map);  
+                el2.addEventListener('click', function() {
+                  map.flyTo({center: [27.594985,53.917944], zoom: 5});
+                 });
+                 
+var popupprikloptika = new mapboxgl.Popup()
+        .setHTML('<b>Прикладная оптика — 2018</b><br> <b>Даты:</b> 18.12.2018 - 21.12.2018 г.' +
+        '<br><b>Deadline:</b> 01.10.2018<br><a style="text-decoration:none;font-weight:bold;"'+
+        ' href="http://ntcup.ru/wp-content/files_mf/1_%D0%B8%D0%BD%D1%84_%D1%80%D1%83%D1%81.pdf" target="_blank">.PDF</a>');    
+
+    var el3 = document.createElement('div');
+            el3.id = 'markerWithExternalCss';
+            // finally, create the marker
+            var markerprikloptika = new mapboxgl.Marker(el3)
+                .setLngLat([30.295598,59.944044])
+                .setPopup(popupprikloptika)
+                .addTo(map);    
+
+                el3.addEventListener('click', function(e) {
+                  map.flyTo({center: [30.295598,59.944044], zoom: 5});
+                  }
+                 );
+
+var popupSPIE = new mapboxgl.Popup()
+        .setHTML('<b>SPIE Optics + Optoelectronics 2019</b><br> <b>Dates:</b> 01.04.2019 - 04.04.2019' +
+        '<br><b>Deadline:</b> 24.10.2018<br><a style="text-decoration:none;font-weight:bold;"'+
+        ' href="http://spie.org/conferences-and-exhibitions/optics-and-optoelectronics" target="_blank">Website</a>');    
+
+    var el4 = document.createElement('div');
+            el4.id = 'markerWithExternalCss';
+            // finally, create the marker
+            var markerSPIE = new mapboxgl.Marker(el4)
+                .setLngLat([14.501151,50.109625])
+                .setPopup(popupSPIE)
+                .addTo(map);    
+                el4.addEventListener('click', function(e) {
+                  map.flyTo({center: [14.501151,50.109625], zoom: 9});
+                  }
+                 );    
+
+var popupWSC = new mapboxgl.Popup()
+        .setHTML('<b>World spectroscopy congress (WSC-2019)</b><br> <b>Dates:</b> 24.03.2019 - 27.03.2019' +
+        '<br><b>Deadline:</b> 05.10.2018<br><a style="text-decoration:none;font-weight:bold;"'+
+        ' href="https://www.physics.worldcongressseries.com/wsc19/" target="_blank">Website</a>');    
+
+    var el5 = document.createElement('div');
+            el5.id = 'markerWithExternalCss';
+            // finally, create the marker
+            var markerWSC = new mapboxgl.Marker(el5)
+                .setLngLat([18.097089,59.321645])
+                .setPopup(popupWSC)
+                .addTo(map);    
+                el5.addEventListener('click', function(e) {
+                  map.flyTo({center: [18.097089,59.321645], zoom: 5});
+                  }
+                 );    
+
+
+var popupPHOTOPTICS = new mapboxgl.Popup()
+        .setHTML('<b>PHOTOPTICS 2019 – 7th International Conference <br>on Photonics, Optics and Laser Technology</b><br> <b>Dates:</b> 15.02.2019 - 27.02.2019' +
+        '<br><b>Deadline:</b> 01.10.2018<br><a style="text-decoration:none;font-weight:bold;"'+
+        ' href="http://www.photoptics.org/" target="_blank">Website</a>');    
+
+    var el6 = document.createElement('div');
+            el6.id = 'markerWithExternalCss';
+            // finally, create the marker
+            var markerPHOTOPTICS = new mapboxgl.Marker(el6)
+                .setLngLat([14.389920,50.099677])
+                .setPopup(popupPHOTOPTICS)
+                .addTo(map);    
+                el6.addEventListener('click', function(e) {
+                  map.flyTo({center: [14.389920,50.099677], zoom: 9});
+                  }
+                 );  
+
+    //Add Navigation controls to the map to the top-right corner of the map
+    var nav = new mapboxgl.NavigationControl();
+    map.addControl(nav, 'top-right');
+
+
+    //Add a 'full screen' button to the map
+    map.addControl(new mapboxgl.FullscreenControl());
+    
+    //Add a Scale to the map
+    map.addControl(new mapboxgl.ScaleControl({
+        maxWidth: 80,
+        unit: 'metric' //imperial for miles
+    }));
+
+    //Add Geolocation control to the map (will only render when page is opened over HTTPS)
+    map.addControl(new mapboxgl.GeolocateControl({
+        positionOptions: {
+            enableHighAccuracy: true
+        },
+        trackUserLocation: true
+    }));
+   map.event.addListener(marker,'click',function() {
+    map.setZoom(9);
+    map.setCenter(marker.getPosition());
+  });
+
+
+
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnA8DJKIOJvgPpp9-vuduQLll6UZyPC4k&callback=myMap"></script>
 
 </body>
 </html>
