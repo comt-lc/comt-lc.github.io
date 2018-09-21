@@ -24,7 +24,7 @@ tr:nth-child(even) {
 </style>
 </head>
 <body>
-
+ <p>AIzaSyDnA8DJKIOJvgPpp9-vuduQLll6UZyPC4k</p>
 <table>
   <tr>
     <th>Мероприятие</th>
@@ -99,6 +99,20 @@ tr:nth-child(even) {
     <td><a href="https://assl.osa.org/home/">Перейти на сайт</a></td>
   </tr>
 </table>
+
+<div id="googleMap" style="width:80%;height:400px;margin: 70px;"></div>
+
+<script>
+function myMap() {
+var mapProp= {
+    center:new google.maps.LatLng(51.508742,-0.120850),
+    zoom:5,
+};
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnA8DJKIOJvgPpp9-vuduQLll6UZyPC4k&callback=myMap"></script>
 
 </body>
 </html>
