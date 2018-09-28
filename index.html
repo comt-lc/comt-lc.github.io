@@ -27,6 +27,14 @@ table {
     font-family: Arial;
 }
 
+.plate1{
+    width: 100%;
+    margin: 70px;
+    font-family: Arial;
+    font-size: 30pt;
+    color: #3a3838;
+}
+
 th, td {
     text-align: left;
     padding: 16px;
@@ -35,11 +43,34 @@ th, td {
 tr:nth-child(even) {
     background-color: #f2f2f2
 }
+
+.myclass{
+    margin: 70px;
+    width:80%;
+    height:400px;
+    filter: grayscale(70%);
+}
+
+@media only screen and (max-width: 600px) {
+    .myclass1{
+        display: none;
+    }
+    .myclass{
+        width: 95%;
+        margin: 10px;
+        
+    }
+    .plate1{
+        margin: 10px;
+        font-size: 18pt;
+    }
+
+}
 </style>
 </head>
 <body>
- 
-<table>
+ <div class="plate1">Конференции и семинары 2018-2019 гг.</div>
+<table class="myclass1">
   <tr>
     <th>Мероприятие</th>
     <th>Даты проведения</th>
@@ -114,7 +145,7 @@ tr:nth-child(even) {
   </tr>
 </table>
 
-<div id="map"  style="width:80%;height:400px;margin:70px; filter: grayscale(70%);"></div>
+<div class="myclass" id="map"></div>
 
 <script>
     //Add your Unwired Maps Access Token here (not the API token!)
@@ -139,7 +170,7 @@ tr:nth-child(even) {
     }), 'top-left');
     var popupopenreadings = new mapboxgl.Popup()
                 .setHTML('<b>OPEN READINGS-2019</b><br> <b>Dates:</b> 19.03.2019 - 22.03.2019<br><b>Deadline:</b> 02.02.2019');    
-//OPEN-READINGS marker
+    //OPEN-READINGS marker
     var el1 = document.createElement('div');
             el1.id = 'markerWithExternalCss';
             // finally, create the marker
@@ -151,10 +182,10 @@ tr:nth-child(even) {
                   map.flyTo({center: [25.326621,54.723435], zoom: 5});
                  });
 
- var popupnanomeeting = new mapboxgl.Popup()
+    var popupnanomeeting = new mapboxgl.Popup()
         .setHTML('<b>NANOMEETING-2019</b><br> <b>Dates:</b> 21.05.2019 - 24.05.2019<br><b>Deadline:</b> 22.12.2018<br><a style="text-decoration:none;font-weight:bold;" href="http://nanomeeting.org/" target="_blank">Website</a>');    
 
-//BELARUS-NANOMEETING
+    //BELARUS-NANOMEETING
     var el2 = document.createElement('div');
             el2.id = 'markerWithExternalCss';
             // finally, create the marker
@@ -166,7 +197,7 @@ tr:nth-child(even) {
                   map.flyTo({center: [27.594985,53.917944], zoom: 5});
                  });
                  
-var popupprikloptika = new mapboxgl.Popup()
+    var popupprikloptika = new mapboxgl.Popup()
         .setHTML('<b>Прикладная оптика — 2018</b><br> <b>Даты:</b> 18.12.2018 - 21.12.2018 г.' +
         '<br><b>Deadline:</b> 01.10.2018<br><a style="text-decoration:none;font-weight:bold;"'+
         ' href="http://ntcup.ru/wp-content/files_mf/1_%D0%B8%D0%BD%D1%84_%D1%80%D1%83%D1%81.pdf" target="_blank">.PDF</a>');    
@@ -184,48 +215,48 @@ var popupprikloptika = new mapboxgl.Popup()
                   }
                  );
 
-var popupSPIE = new mapboxgl.Popup()
+    var popupSPIE = new mapboxgl.Popup()
         .setHTML('<b>SPIE Optics + Optoelectronics 2019</b><br> <b>Dates:</b> 01.04.2019 - 04.04.2019' +
         '<br><b>Deadline:</b> 24.10.2018<br><a style="text-decoration:none;font-weight:bold;"'+
         ' href="http://spie.org/conferences-and-exhibitions/optics-and-optoelectronics" target="_blank">Website</a>');    
 
     var el4 = document.createElement('div');
-            el4.id = 'markerWithExternalCss';
-            // finally, create the marker
-            var markerSPIE = new mapboxgl.Marker(el4)
-                .setLngLat([14.501151,50.109625])
-                .setPopup(popupSPIE)
-                .addTo(map);    
-                el4.addEventListener('click', function(e) {
-                  map.flyTo({center: [14.501151,50.109625], zoom: 9});
-                  }
-                 );    
+    el4.id = 'markerWithExternalCss';
+    // finally, create the marker
+    var markerSPIE = new mapboxgl.Marker(el4)
+    .setLngLat([14.501151,50.109625])
+    .setPopup(popupSPIE)
+    .addTo(map);    
+    el4.addEventListener('click', function(e) {
+            map.flyTo({center: [14.501151,50.109625], zoom: 9});
+        }
+    );    
 
-var popupWSC = new mapboxgl.Popup()
+    var popupWSC = new mapboxgl.Popup()
         .setHTML('<b>World spectroscopy congress (WSC-2019)</b><br> <b>Dates:</b> 24.03.2019 - 27.03.2019' +
         '<br><b>Deadline:</b> 05.10.2018<br><a style="text-decoration:none;font-weight:bold;"'+
         ' href="https://www.physics.worldcongressseries.com/wsc19/" target="_blank">Website</a>');    
 
     var el5 = document.createElement('div');
-            el5.id = 'markerWithExternalCss';
+    el5.id = 'markerWithExternalCss';
             // finally, create the marker
-            var markerWSC = new mapboxgl.Marker(el5)
-                .setLngLat([18.097089,59.321645])
-                .setPopup(popupWSC)
-                .addTo(map);    
-                el5.addEventListener('click', function(e) {
-                  map.flyTo({center: [18.097089,59.321645], zoom: 5});
-                  }
-                 );    
+    var markerWSC = new mapboxgl.Marker(el5)
+    .setLngLat([18.097089,59.321645])
+    .setPopup(popupWSC)
+    .addTo(map);    
+    el5.addEventListener('click', function(e) {
+            map.flyTo({center: [18.097089,59.321645], zoom: 5});
+        }
+    );    
 
 
-var popupPHOTOPTICS = new mapboxgl.Popup()
-        .setHTML('<b>PHOTOPTICS 2019 – 7th International Conference <br>on Photonics, Optics and Laser Technology</b><br> <b>Dates:</b> 15.02.2019 - 27.02.2019' +
-        '<br><b>Deadline:</b> 01.10.2018<br><a style="text-decoration:none;font-weight:bold;"'+
-        ' href="http://www.photoptics.org/" target="_blank">Website</a>');    
+    var popupPHOTOPTICS = new mapboxgl.Popup()
+    .setHTML('<b>PHOTOPTICS 2019 – 7th International Conference <br>on Photonics, Optics and Laser Technology</b><br> <b>Dates:</b> 15.02.2019 - 27.02.2019' +
+    '<br><b>Deadline:</b> 01.10.2018<br><a style="text-decoration:none;font-weight:bold;"'+
+    ' href="http://www.photoptics.org/" target="_blank">Website</a>');    
 
     var el6 = document.createElement('div');
-            el6.id = 'markerWithExternalCss';
+    el6.id = 'markerWithExternalCss';
             // finally, create the marker
             var markerPHOTOPTICS = new mapboxgl.Marker(el6)
                 .setLngLat([14.389920,50.099677])
