@@ -10,11 +10,12 @@
 <style>
 
 #markerWithExternalCss {
-                background-image: url('https://comt-lc.github.io/marker5.png');
-                background-size: cover;
+                background-image: url('https://comt-lc.github.io/mar.png');
+                background-repeat: no-repeat;
+                background-size: 25px 50px;
                 width: 25px;
-                height: 25px;
-                border-radius: 50%;
+                height: 50px;
+                
                 cursor: pointer;
             }
 
@@ -48,7 +49,7 @@ tr:nth-child(even) {
     margin: 70px;
     width:80%;
     height:400px;
-    filter: grayscale(70%);
+    filter: grayscale(60%);
 }
 
 @media only screen and (max-width: 600px) {
@@ -143,6 +144,16 @@ tr:nth-child(even) {
     <td>Будет объявлен позднее</td>
     <td><a target="_blank" href="https://assl.osa.org/home/">Перейти на сайт</a></td>
   </tr>
+
+  <tr>
+    <td>VIII Международная конференция
+        "Фотоника и информационная оптика"</td>
+    <td> 23.01.2019 - 25.01.2019 </td>
+    <td>Москва, Россия</td>
+    <td>10.11.2018</td>
+    <td><a target="_blank" href="http://fioconf.mephi.ru/info/">Перейти на сайт</a></td>
+  </tr>
+
 </table>
 
 <div class="myclass" id="map"></div>
@@ -169,7 +180,7 @@ tr:nth-child(even) {
         layers: layers
     }), 'top-left');
     var popupopenreadings = new mapboxgl.Popup()
-                .setHTML('<b>OPEN READINGS-2019</b><br> <b>Dates:</b> 19.03.2019 - 22.03.2019<br><b>Deadline:</b> 02.02.2019');    
+                .setHTML('<b>OPEN READINGS-2019</b><br> <b>Dates:</b> 19.03.2019 - 22.03.2019<br><b>Deadline:</b> 02.02.2019<br><a style="font-weight:bold;text-decoration:none;" target="blank_" href="http://www.openreadings.eu/">Website</a>');    
     //OPEN-READINGS marker
     var el1 = document.createElement('div');
             el1.id = 'markerWithExternalCss';
@@ -179,7 +190,7 @@ tr:nth-child(even) {
                 .setPopup(popupopenreadings)
                 .addTo(map);
                 el1.addEventListener('click', function() {
-                  map.flyTo({center: [25.326621,54.723435], zoom: 5});
+                  map.flyTo({center: [25.326621,54.723435], zoom: 11});
                  });
 
     var popupnanomeeting = new mapboxgl.Popup()
@@ -194,7 +205,7 @@ tr:nth-child(even) {
                 .setPopup(popupnanomeeting)
                 .addTo(map);  
                 el2.addEventListener('click', function() {
-                  map.flyTo({center: [27.594985,53.917944], zoom: 5});
+                  map.flyTo({center: [27.594985,53.917944], zoom: 11});
                  });
                  
     var popupprikloptika = new mapboxgl.Popup()
@@ -211,9 +222,27 @@ tr:nth-child(even) {
                 .addTo(map);    
 
                 el3.addEventListener('click', function(e) {
-                  map.flyTo({center: [30.295598,59.944044], zoom: 5});
+                  map.flyTo({center: [30.295598,59.944044], zoom: 11});
                   }
                  );
+                 var popupmephi = new mapboxgl.Popup()
+        .setHTML('<b>VIII Международная конференция -<br> Фотоника и информационная оптика</b><br> <b>Даты:</b> 23.01.2019 - 25.01.2019 г.' +
+        '<br><b>Deadline:</b> 10.11.2018<br><a style="text-decoration:none;font-weight:bold;"'+
+        ' href="http://fioconf.mephi.ru/info/" target="_blank">Website</a>');    
+
+    var el7 = document.createElement('div');
+            el7.id = 'markerWithExternalCss';
+            // finally, create the marker
+            var markermephi = new mapboxgl.Marker(el7)
+                .setLngLat([37.663906,55.649624])
+                .setPopup(popupmephi)
+                .addTo(map);    
+
+                el7.addEventListener('click', function(e) {
+                  map.flyTo({center: [37.663906,55.649624], zoom: 11});
+                  }
+                 );
+            
 
     var popupSPIE = new mapboxgl.Popup()
         .setHTML('<b>SPIE Optics + Optoelectronics 2019</b><br> <b>Dates:</b> 01.04.2019 - 04.04.2019' +
@@ -228,7 +257,7 @@ tr:nth-child(even) {
     .setPopup(popupSPIE)
     .addTo(map);    
     el4.addEventListener('click', function(e) {
-            map.flyTo({center: [14.501151,50.109625], zoom: 9});
+            map.flyTo({center: [14.501151,50.109625], zoom: 11});
         }
     );    
 
@@ -245,7 +274,7 @@ tr:nth-child(even) {
     .setPopup(popupWSC)
     .addTo(map);    
     el5.addEventListener('click', function(e) {
-            map.flyTo({center: [18.097089,59.321645], zoom: 5});
+            map.flyTo({center: [18.097089,59.321645], zoom: 14});
         }
     );    
 
@@ -263,7 +292,7 @@ tr:nth-child(even) {
                 .setPopup(popupPHOTOPTICS)
                 .addTo(map);    
                 el6.addEventListener('click', function(e) {
-                  map.flyTo({center: [14.389920,50.099677], zoom: 9});
+                  map.flyTo({center: [14.389920,50.099677], zoom: 11});
                   }
                  );  
 
